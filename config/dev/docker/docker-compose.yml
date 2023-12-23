@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: ../../../
+      dockerfile: config/dev/docker/Dockerfile
+      args:
+        PROFILE: DEV
+    image: mindsup-front
+    networks:
+      - mindup_net
+    container_name: mindsup_ui-front-cn
+    volumes:
+    - '../../../:/app'
+    ports:
+      - "4201:4201"
+
+networks:
+  mindup_net:
+    driver: bridge
+
